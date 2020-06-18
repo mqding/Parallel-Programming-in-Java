@@ -1,0 +1,16 @@
+# Compiled class file
+*.class
+
+#log file
+*.log
+
+#target dir
+target/
+
+#idea ide
+*/.idea/workspace.xml
+*/.idea/sbt.xml
+*/.idea/misc.xml
+
+#apple
+.DS_Store
