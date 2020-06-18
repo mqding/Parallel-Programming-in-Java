@@ -1,6 +1,5 @@
 package edu.coursera.parallel;
 
-import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveAction;
 
@@ -169,12 +168,9 @@ public final class ReciprocalArraySum {
             int start = getChunkStartInclusive(i, numTasks, n);
             int end = getChunkEndExclusive(i, numTasks, n);
             tasks[i] = new ReciprocalArraySumTask(start, end, input);
-            tasks[i].fork();
         }
 
-        for(int i = 0; i < numTasks; i++) {
-            tasks[i].join();
-        }
+        ForkJoinTask.invokeAll(tasks);
 
         for(int i = 0; i < numTasks; i++) {
             sum += tasks[i].getValue();
